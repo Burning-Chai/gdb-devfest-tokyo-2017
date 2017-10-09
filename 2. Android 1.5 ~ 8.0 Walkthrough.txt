@@ -1,0 +1,189 @@
+2. Android 1.5 ~ 8.0 Walkthrough
+Androidのこれまでとこれから。
+
+松村勇輝 / AbemaTV / Android Engineer
+OSフレームワーク
+
+Oreo -> targetSdkVerson="26"
+
+バッテリー消費を抑える機能が出てきている
+Doze AppStandby
+PJ.SVELTE
+
+BG Activityは色々と考えないといけない
+Reduce, Defer, Coalesce
+
+OS 1.5 API LV3 / CUPCAKE / April 2009
+OS 1.6 API LV4 / DONUT / September 2009
+  バッテリー使用量がわかるようになった
+OS 2.0/2.1 API LV5~7 / CUPCAKE / October 2009
+ 2.0 - E
+   フォアグラウドの起動に
+ 8.0 - O
+   バックグラウンドサービス起動が大変になった
+OS 2.2 API LV8 / FROYO / May 2010
+OS 2.3 API LV9,10 / GINGERBREAD / Decemver 2010
+  2.2 - F
+    Dalvik + JIT compiler
+  2.3 - G
+    COncurretn GC
+  5.0 - L
+    ART
+  7.0 - N
+    ART + JIT Compiler
+    アプリのインストールアップデートなどが時間短縮
+  Runtimeの違いがパフォーマンスの違いがでるよ
+OS 3.X API LV11,12,13 / HONEYCOMB / Febrary 2011
+  Fragment, Loaderとかの登場
+  大画面用
+OS 4.0 API LV14,15 / ICE CREAM  / Decemver 2010
+OS 4.1 API LV14,15 / JELLY BEAN  / Decemver 2010
+  アニメションがスムーズに
+  4.3 - J
+    Unicode6 emoji
+  5.0 - L
+    "nonhuman" shape
+    人間アイコンが違うのに変わった
+  6.0 - M
+    Unicode7%8
+    ZWJ
+  7.0 -N
+    Unicode 9
+    "Human" shape & skin tones
+    人間絵文字が戻ってきた！絵文字と色を混ぜ合わせることができることによって変更できる
+OS 4.4 API LV.19 / KITKAT
+OS 5.0, 5.1 LV.21.22
+  マテリアルデザイン
+  VEctor
+  4.4 -K
+  Based on Chromium
+  5.0 - L
+  I@dateble from google play
+  7.0 -N
+  Chrome APK
+  メモリ消費の軽減
+  8/0 -O
+  Multi process mode
+  Safe Browser
+  セキュリ強化
+OS 6.0 / API LV23
+  6. -M
+  スクリーンOFF, バッテリー充電, 端末静止状態位
+  省電力発生
+  7.0 - N
+　端末静止状態の条件がもっと良いkな字になった
+OS 7.0
+  マルチwinodow
+  App Icon
+  4.3 -J mipmap
+  7.1 N round icon
+  8.0 - 0 
+  Adaptive icon 自由に変更できる
+os 8.0
+  バックグラウンドを制限される
+  job-schedulingを使えばいい感じにできる
+
+  Androider
+  アプリをOSに合わせての最適化しよう
+
+
+
+Keishin Yokomaku / Drivemode
+アプリ層
+Retro/Prospective Androind Application Development
+
+~ cupcake
+
+Activity Lifecycle
+1.5からほとんど変わっていない
+
+Activityはいろんなタイミングで変わっていく
+  画面遷移、回転、他のアプリのメモリ確保などなど
+
+なぜ必要？
+  メモリを効率的に使えるようにするため！
+    使わないものはメモリから出しちゃえ！
+  設定や状態の返歌に対応するため
+
+非同期処理がしたくなるよね？
+Asynchronous Task Lifecycle
+非同期から返ってきたらMAin　Activityが終わっていた！
+ここらへん大変だっった！
+
+AsyncTask は cupcake で登場
+Activity 中に static な AsyncTask をもつのが多かった
+WeakReferenceを使ってActivityとやり取りをしていたね
+
+Actityi と密結合になってしまう -> interfaceで解決できるよ
+長時間処理はむかないね
+
+もう一つの非同期処理 IntentService
+簡単なジョブキュー
+
+~ Froyo
+network I/O
+  Appact Http Client
+  巨大でメンテナスがおざない
+
+Ginferbread ~ 
+Http(s) URL Connection
+Disk I/O
+  SQLite
+  SharedPreference
+
+パフォーマンスの監視
+StrictMode
+
+Honeycomb ~ 
+非同期処理でActivityが再生成されたらどうする？
+
+LoaderManger, Loader
+Activityと非同期処理のライフサイクルをいい感じにしてくれる
+
+Fragment
+setRetainInstance UIを持たないフラグメント
+標準とサポートライブラリがあるが、サポートライブラリの方を使いましょう！
+
+Lollipop ~ 
+マテリアルデザイン
+Runtime -> ART
+バックグラウンド処理がかなり変更
+  JobSchedulers and GcmNertworkManger(Firebase JobDispacher)
+  ナッテリー諸費を押させるのメイン
+
+Marchmallow ~ 
+Doze
+  電池消費を抑える
+
+Nougat
+Doze Enchument
+
+Bacbround Limit
+  IntenServcie -> JobIntentService
+  Location
+
+Oreo
+旧来のAPIの抽象化
+ListView, GridView -> RecyclerView
+LaupitMander, SnapHelper
+
+ArchitectureCOmponent
+ライフサイクルの抽象化
+LifecycleOwner, LifecycleObserver, ViewModel
+LiveData, Paging LIbrary
+
+AppCompatactivityを継承するだけでLifecycleOnwerがじっそうされる
+AndroidViewModelがいいのかな？
+
+まとめ
+省エネを意識して
+抽象化をいい感じに
+RxJavaは他のでなかよくなれるかも
+
+
+
+
+
+
+
+
