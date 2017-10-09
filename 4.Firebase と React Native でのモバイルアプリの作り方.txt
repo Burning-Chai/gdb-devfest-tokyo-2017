@@ -1,1 +1,102 @@
-Firebase と React Native でのモバイルアプリの作り方
+4. Firebase と React Native でのモバイルアプリの作り方
+コキチーズ @k2wanko github
+
+# Firebaseとは何か？
+ただのBaaSではない
+* Devellop * EARN * Grow * Analytics が揃っている
+
+Why use Firebase?
+クライアントに集中することができる
+サーバ周りの手間を省ける(mysql, ssh, apt-get, yum など)
+個人開発分は無料枠で稼げる
+
+# React Nativeについて
+webview ではない JavaScriptCore
+safariのjavascriptエンジンが使われている
+ブラウザの機能もサポートされている
+  Fetch, websocket, setTimeout, setInterval, etc...
+javascriptのアップデートはいつでもできるよ！
+審査とかの問題がきにならない
+ホットリロードは当たり前！
+ネイティブもアクセスできるし、テストもエミュレータを必要としない。
+ロジックのテストが用意になる。
+部分的React Nativeもできる。
+アニメーションとかはナイティ部にまかせる
+
+よく使われるらい日ラリ
+NativeBase - Design framework
+react0navigation - Routing library
+MobX - data binding
+React Native Firebase
+
+# Firebase各種サービスとReact Native Firebaseについて
+Firevase Authentication
+- 各種プロバイダに対応
+- メール認証、SMS認証などもサポート
+- ないやつはカスタマイズで作れる
+
+Realtime Database
+- online offlineでデータ保存できる, KVS
+  - couchbase lite, sync gatewayに似ている
+  - 権限とかもchannelの原理と同じ感じな気がする
+
+Google Analytics for Firebase
+カスタムイベント登録も可能
+イベント送信に上限はない
+
+任意のイベントを記録        logEvent
+現在のスクリーンを指定できる setCurretnScreen
+ユーザIDの設定             setUserId
+ユーザの他の情報           setUserProperty
+
+Firebase Cloud Messaging
+getInitialNotification で通知を受け取る
+アプリ起動中受け取りは違うやつ onMessage
+２つは渡される値が違うから注意！
+iOSはpermission確認が大事！
+
+Cloud Storage for Firebase
+画像とか動画とか重めのデータを
+
+Firebase Remote Config
+アプリケーションの設定ファイルを共有できる
+ex) 商品を購入したユーザだけにONにする設定を変えれる
+
+Firebase Crash Reporting
+React Native Fabric経由でCrashlyticsを使おう！
+
+AdMob
+広告を載せて行こうぜ！
+
+Cloud Functions for Firebase
+イベント駆動でnode.jsを実行できる
+データ書き込み等のイベントをトリガーに実行する
+ex) ユーザ情報の削除とかが楽になる
+    商品購入後にwebpushを通知したり
+ちょっとメモリは少ない
+
+Cloud Firestore(beta)
+Realtime Databaseの後継データベース
+ドキュメント指向のデータベース
+QueryとTransationに対応している
+特定フィールドの削除も可能
+こっちをつかおう！
+
+# 初心者向けのお困りごとはここに
+GCPUGに行こう！
+https://gcpug.jp/join
+
+https://expo.io/ Expo使えばjavascirptかける人ならいいかも
+
+
+
+
+
+
+
+
+
+
+
+
+

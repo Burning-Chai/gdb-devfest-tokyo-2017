@@ -1,1 +1,11 @@
 6. FirebaseAnalytics + BigQuery + DataStudio
+
+Firebaseを入れるだけでいい感じにデータは集めてくれる。
+カスタマイズで自分達で色々とデータは送りましょう
+アプリを開発しているので、自分たちのDBにもデータはあるはずでしょう
+
+これらを全部BigQueryに入れ込む
+その他の外部情報をあるのならそれもぶち込め！
+
+それをDataStudioやApp Meterでいい感じに表示させよう！
+

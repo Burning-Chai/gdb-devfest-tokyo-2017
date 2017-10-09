@@ -1,1 +1,77 @@
 7. FlutterでAndroid/iOS両対応のアプリ開発
+najeira / 
+ふらったー
+
+https://flutter.io/
+https://github.com/flutter/flutter
+
+FlutterのUIは宣言的、designerも参加できる！
+DOMのような感じにいけるので、編集しやすい
+
+# 概要・特徴
+フレームワーク、SDK
+高開発効率、高パフォーマンスを目指している
+2Dアプリ not game
+Dart language
+Reactive framework. insperd by React
+フレームワーク上にUIが用意されている
+
+ネイティブのARMコードにコンパイルされる
+  iOS: C/C++/Dartすべて
+  Androis: C/C++すべて、Dartの大半
+2D GPU-accelerated APIs 、ブラウザとかで使われるやつのちょっと低い感じ？
+ほっとリロード
+
+今年のGoogle I/Oでα版
+ネイティブのUI Componentをflutterを埋め込むのはできない(まだ？)
+別Activityへの画面遷移は問題なし
+
+## Flutter UI
+UIのことをwidgetと呼ぶ
+widgetだｋで1000近くある
+基本的にはflutterが用意しているwidgetを使う
+
+### Widget
+StatelessWidgetm StatefullWidgetをextendsをする
+
+StatefullWidget
+buildでUIを構築し、setStateで再描画
+差分のみの再描画
+
+画面数十あってもほっとリロードは1s
+stateはずっと保持される
+
+## テスト
+widget 操作にたいして　
+intergration 起動から色々
+
+## Platform Channels
+プラットフォーム側のAPIを呼ぶことができる
+Camera, GPS, Bluetoothなど
+
+## 仕組み
+プラットフォームのcanvasに直接書く
+Chromiumからのコードが多い
+Dart
+  made by Google
+  dynamic type
+  similar Java
+  develope by dart into AdWirds and AdSense
+
+# 機能・UI
+
+# 事例
+Google(mobile sales tool app)
+Hamiltonmusical
+Newsvoice
+CARTUNE
+
+
+
+
+
+
+
+
+
+
